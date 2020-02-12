@@ -1,0 +1,46 @@
+
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-12">
+      <h1>All our Flats</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+        <p>All 3 flats.</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <% @flats.each do |flat| %>
+      <div class="col-4">
+        <div class="flat-card">
+          <div class="flat-card-image" style="width:100%; height:100px; background-image: url('https://images.unsplash.com/photo-1494526585095-c41746248156?w=1200')"></div>
+          <div class="flat-card-content">
+            <div class="flat-card-title">
+              <h4><%= link_to flat.name.capitalize %></h4>
+            </div>
+            <p><%= link_to flat.address %></p>
+            <div>
+              <div>
+                <i class="material-icons mr-2">people</i>
+                <span><%= link_to flat.number_of_guests %></span>
+              </div>
+              <div>
+                <i class="material-icons mr-2">euro_symbol</i> <%= link_to flat.price_per_night %>
+              </div>
+            </div>
+          </div>
+          <div class="flat-card-actions">
+            <a href="/flats/2943">More info</a>
+            <a class="ml-3 text-warning" href="/flats/2943/edit">Edit</a>
+            <a data-confirm="Are you sure?" class="ml-3 text-danger" rel="nofollow" data-method="delete" href="/flats/2943">Remove</a>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+<a class="btn btn-outline-primary my-2 my-sm-0 ml-2"><%= link_to "Add flat", new_flat_path %></a>
+
